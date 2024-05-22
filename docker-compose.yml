@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  app:
+    container_name: inventory-management
+    build: .
+    image: tanzim077/inventory-management
+    ports:
+      - "5000:5000"
+    environment:
+      - PG_DB=inventoryManagement
+      - PG_USER=postgres
+      - PG_PASSWORD=72544
+      - PG_HOST=pgdb
+    depends_on:
+      - pgdb
+    restart: always
+
+  pgdb:
+    container_name: pgdb
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: inventoryManagement
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 72544
+    volumes:
+      - pgdb_data:/var/lib/postgresql/data
+
+volumes:
+  pgdb_data:
