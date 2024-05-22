@@ -3,4 +3,3 @@ export DATABASE_URL="postgresql://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:5432/${PG
 yarn prisma:migrate
 yarn prisma:generate
 yarn start
-
